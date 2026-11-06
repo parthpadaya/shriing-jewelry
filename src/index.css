@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-script: "Pinyon Script", cursive;
+  --color-ivory: #fbf7f0;
+  --color-champagne: #f4ead8;
+  --color-sand: #e6d9c0;
+  --color-burgundy: #6b1a2b;
+  --color-burgundy-dark: #4a0f1d;
+  --color-burgundy-light: #8c2a40;
+  --color-gold: #b8923a;
+  --color-gold-light: #d9bb73;
+  --color-gold-dark: #8f6f24;
+  --color-rose: #c98b7b;
+  --color-ink: #2a2523;
+  --color-muted: #6f6560;
+  --shadow-soft: 0 10px 40px -14px rgba(74, 15, 29, 0.18);
+  --shadow-lift: 0 26px 60px -22px rgba(74, 15, 29, 0.3);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: #d9bb73;
+    color: #4a0f1d;
+  }
+  :focus-visible {
+    outline: 2px solid #b8923a;
+    outline-offset: 2px;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.28em] text-gold-dark;
+  }
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-medium tracking-wide whitespace-nowrap transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-burgundy text-ivory shadow-soft hover:bg-burgundy-dark;
+  }
+  .btn-gold {
+    @apply bg-gold text-white hover:bg-gold-dark;
+  }
+  .btn-outline {
+    @apply border border-burgundy text-burgundy hover:bg-burgundy hover:text-ivory;
+  }
+  .btn-ghost {
+    @apply text-burgundy hover:bg-champagne;
+  }
+  .btn-light {
+    @apply bg-ivory text-burgundy hover:bg-white;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+  .input {
+    @apply w-full rounded-sm border border-sand bg-white px-3.5 py-2.5 text-sm text-ink outline-none transition placeholder:text-muted/60 focus:border-gold focus:ring-2 focus:ring-gold/20;
+  }
+  .label {
+    @apply mb-1.5 block text-[11px] font-medium uppercase tracking-wider text-muted;
+  }
+  .card {
+    @apply rounded-md border border-sand/70 bg-white shadow-soft;
+  }
+  .chip {
+    @apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-sand bg-white px-3.5 py-1.5 text-xs font-medium text-ink transition hover:border-gold;
+  }
+  .chip-active {
+    @apply border-burgundy bg-burgundy text-ivory hover:border-burgundy;
+  }
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b8923a, transparent);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .th {
+    @apply px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-muted;
+  }
+  .td {
+    @apply px-4 py-3 text-sm;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
